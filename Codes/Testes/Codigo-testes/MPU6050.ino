@@ -1,13 +1,12 @@
 
 void mpu_setup()
 {
-      Wire.begin();
+    Wire.begin();
 
     mpuA.setAddress(MPU1);
     mpuA.begin();
    
     Serial.println(F("Calculating gyro offset, do not move MPU6050"));
-    delay(1000);
     mpuA.calcGyroOffsets();
     Serial.println("Done.");
     
@@ -22,6 +21,7 @@ void mpu_setup()
 }
 void mpu_loop()
 {
+
   if((millis()- Mpu_millisInicial) > 10){
 
     mpuA.update();

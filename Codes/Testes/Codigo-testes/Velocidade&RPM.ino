@@ -2,6 +2,7 @@
 
 void velocidade()
 {
+
   if((millis() - Velocidade_millisInicial) > 1000){
     
     noInterrupts();
