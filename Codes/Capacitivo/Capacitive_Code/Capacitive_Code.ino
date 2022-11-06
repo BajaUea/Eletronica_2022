@@ -1,10 +1,10 @@
-const int pinoSinal = 15; //PINO DIGITAL UTILIZADO PELO SENSOR
+const int pinoSinal = 8; //PINO DIGITAL UTILIZADO PELO SENSOR
 const int pinoLed = 2; //PINO DIGITAL UTILIZADO PELO LED
  
 void setup(){
   Serial.begin(9600);
   pinMode(pinoSinal, INPUT); //DEFINE O PINO COMO ENTRADA
-  pinMode(pinoLed, OUTPUT); //DEFINE O PINO COMO SAÍDA
+  // pinMode(pinoLed, OUTPUT); //DEFINE O PINO COMO SAÍDA
   digitalWrite(pinoLed, LOW); //LED INICIA DESLIGADOq
 }
 void loop(){
@@ -14,4 +14,5 @@ void loop(){
         digitalWrite(pinoLed, LOW); //APAGA O LED
   }
   Serial.println(digitalRead(pinoSinal));
+  delay(100);
 }
