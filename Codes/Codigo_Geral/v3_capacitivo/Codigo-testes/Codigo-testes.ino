@@ -1,5 +1,8 @@
 #include <Wire.h>
 
+// Tempo
+int tempo;
+
 // Capacitivo
 const int Capacitivo_1 = 8;
 const int Capacitivo_2 = 12;
@@ -23,7 +26,8 @@ typedef struct struct_message {
   float Gyro_Y;
   float Gyro_Z;
   float ACC;
-  int Capacitivo;
+  int capacitivo;
+  int tempo;
 } struct_message;
 
 struct_message myData;
@@ -99,7 +103,8 @@ void setup() {
 }
 
 void loop() {
-  
+
+  tempo = millis();
   tempInfra();
   velocidade();
   mpu_loop();

@@ -1,5 +1,4 @@
 void capacitivo_setup(){
-  
   pinMode(Capacitivo_1, INPUT); //DEFINE O PINO COMO ENTRADA
   pinMode(Capacitivo_2, INPUT); //DEFINE O PINO COMO ENTRADA
   attachInterrupt (Capacitivo_1, funcao_ISR, CHANGE); //Interrupção para ler pulso RPM
