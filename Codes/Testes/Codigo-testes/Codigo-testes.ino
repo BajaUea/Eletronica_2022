@@ -37,7 +37,7 @@ LiquidCrystal_I2C lcd(0x27,20,4);
 
 // RPM E VELOCIDADE
 #include <SoftwareSerial.h>
-#define pinVEL 15 // // Pino de interrupção para rotação da roda
+#define pinVEL 16 // // Pino de interrupção para rotação da roda
 #define pinRPM 17 // Pino de interrupção para rotação do motor
 
 unsigned long Velocidade_millisInicial = 0; //tempo inicial para velocidade 
