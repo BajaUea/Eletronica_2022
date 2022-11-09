@@ -5,12 +5,14 @@
 // Must match the sender structure
 typedef struct struct_message {
   double temp_obj;
-  double temp_amb;
-  float RPM; 
+  double temp_amb; 
+  float RPM;
   float VEL;
+  float DISTANCIA;
   float Gyro_X;
   float Gyro_Y;
   float Gyro_Z;
+  float ACC;
   int capacitivo;
   int tempo;
 } struct_message;
@@ -31,6 +33,10 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   Serial.print(myData.VEL);
   Serial.print(" , ");
   Serial.print(myData.RPM);
+  Serial.print(" , ");
+  Serial.print(myData.DISTANCIA);
+  Serial.print(" , ");
+  Serial.print(myData.ACC);
   Serial.print(" , ");
   switch (myData.capacitivo) {
     case 0:
