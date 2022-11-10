@@ -4,8 +4,8 @@
 int tempo;
 
 // Capacitivo
-const int Capacitivo_1 = 8;
-const int Capacitivo_2 = 12;
+const int Capacitivo_1 = 2;
+const int Capacitivo_2 = 16;
 int capacitivo = 0;
 
 // espnow
@@ -14,7 +14,7 @@ int capacitivo = 0;
 
 // REPLACE WITH YOUR RECEIVER MAC Address
 // 94:B5:55:2C:F5:EC
-uint8_t broadcastAddress[] = {0x94, 0xB5, 0x55, 0x2D, 0x0B, 0x08};
+uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 
 typedef struct struct_message {
   double temp_obj;
@@ -47,8 +47,8 @@ LiquidCrystal_I2C lcd(0x27,20,4);
 
 // RPM E VELOCIDADE
 #include <SoftwareSerial.h>
-#define pinVEL 15 // // Pino de interrupção para rotação da roda
-#define pinRPM 17 // Pino de interrupção para rotação do motor
+#define pinVEL 13 // // Pino de interrupção para rotação da roda
+#define pinRPM 12 // Pino de interrupção para rotação do motor
 
 unsigned long Velocidade_millisInicial = 0; //tempo inicial para velocidade 
 volatile byte pulsosVEL = 0; //contador de pulsos para velocidade
@@ -109,7 +109,7 @@ void loop() {
   velocidade();
   mpu_loop();
   espnow_loop();
-  SD_loop();
+  //SD_loop();
   display_loop();
 
   Serial.print(temp_obj);
