@@ -13,8 +13,8 @@ int capacitivo = 0;
 #include <WiFi.h>
 
 // REPLACE WITH YOUR RECEIVER MAC Address
-// 94:B5:55:2C:F5:EC
-uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+// 24:6F:28:79:4E:2C
+uint8_t broadcastAddress[] = {0x24, 0x6F, 0x28, 0x79, 0x4E, 0x2C};
 
 typedef struct struct_message {
   double temp_obj;
