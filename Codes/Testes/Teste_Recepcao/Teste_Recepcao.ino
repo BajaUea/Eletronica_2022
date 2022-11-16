@@ -8,9 +8,13 @@ typedef struct struct_message {
   double temp_amb;
   float RPM; 
   float VEL;
+  float DISTANCIA;
   float Gyro_X;
   float Gyro_Y;
   float Gyro_Z;
+  float ACC;
+  int capacitivo;
+  int tempo;
 } struct_message;
 
 // Create a struct_message called myData
@@ -28,12 +32,20 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   Serial.print(" , ");
   Serial.print(myData.RPM);
   Serial.print(" , ");
+  Serial.print(myData.DISTANCIA);
+  Serial.print(" , ");
 
   Serial.print(myData.Gyro_X);
   Serial.print(" , ");
   Serial.print(myData.Gyro_Y);
   Serial.print(" , ");
   Serial.print(myData.Gyro_Z);
+
+  Serial.print(myData.ACC);
+  Serial.print(" , ");
+  Serial.print(myData.capacitivo);
+  Serial.print(" , ");
+  Serial.print(myData.tempo);
 
   Serial.println();
 }
@@ -54,6 +66,7 @@ void setup() {
   // Once ESPNow is successfully Init, we will register for recv CB to
   // get recv packer info
   esp_now_register_recv_cb(OnDataRecv);
+  Serial.println("passou setup");
 }
  
 void loop() {
