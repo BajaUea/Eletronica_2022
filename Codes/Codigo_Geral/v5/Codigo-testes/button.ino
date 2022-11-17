@@ -1,9 +1,10 @@
-void button_setup(){
+void button_setup()
+{
   pinMode(button, INPUT);
-  attachInterrupt (button, ISR_button, CHANGE);
+  attachInterrupt(button, ISR_button, HIGH);
 }
 
 void ISR_button()
 {
-  status_button = digitalRead(button);
+  status_button++
 }
