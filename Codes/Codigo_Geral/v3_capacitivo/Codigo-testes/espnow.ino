@@ -32,13 +32,13 @@ void espnow_loop() {
   // Set values to send
   // myData.transmition_message = String(temp_obj) + " , " + String(RPM) + " , " +  String(VEL) + " , " +  String(currentAngleX_A) + " , " +  String(currentAngleY_A) + " , " +  String(currentAngleZ_A) + "\n";
 
-  myData.temp_obj = temp_obj;
-  myData.temp_amb = temp_amb;
-  myData.RPM = RPM;
+  //myData.temp_obj = temp_obj;
+  //myData.temp_amb = temp_amb;
+  //myData.RPM = RPM;
   myData.VEL = VEL;
-  myData.Gyro_X = currentAngleX_A;
-  myData.Gyro_Y = currentAngleY_A;
-  myData.Gyro_Z = currentAngleZ_A;
+  //myData.Gyro_X = currentAngleX_A;
+  //myData.Gyro_Y = currentAngleY_A;
+  //myData.Gyro_Z = currentAngleZ_A;
   myData.ACC = ACC;
   myData.DISTANCIA = DISTANCIA;
   myData.capacitivo = capacitivo;
