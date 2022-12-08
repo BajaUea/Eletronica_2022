@@ -1,5 +1,5 @@
 #include <Wire.h>
-
+//O que eztiver comentado é pq não foi usado no teste do sitio e nem enviado para o recptor
 // Tempo
 int tempo;
 
@@ -13,18 +13,18 @@ int capacitivo = 0;
 #include <WiFi.h>
 
 // REPLACE WITH YOUR RECEIVER MAC Address
-// 24:6F:28:79:4E:2C
-uint8_t broadcastAddress[] = {0x24, 0x6F, 0x28, 0x79, 0x4E, 0x2C};
+// 94:B5:55:2D:0B:08
+uint8_t broadcastAddress[] = {0x94, 0xB5, 0x55, 0x2D, 0x0B, 0x08};
 
 typedef struct struct_message {
-  double temp_obj;
-  double temp_amb; 
-  float RPM;
+  //double temp_obj;
+  //double temp_amb; 
+  //float RPM;
   float VEL;
   float DISTANCIA;
-  float Gyro_X;
-  float Gyro_Y;
-  float Gyro_Z;
+  //float Gyro_X;
+  //float Gyro_Y;
+  //float Gyro_Z;
   float ACC;
   int capacitivo;
   int tempo;
@@ -81,8 +81,8 @@ void setup() {
   
  Serial.begin(115200);
 
- mpu_setup();
- SD_setup();
+ //mpu_setup();
+ //SD_setup();
  espnow_setup();
  capacitivo_setup();
  
@@ -105,14 +105,14 @@ void setup() {
 void loop() {
 
   tempo = millis();
-  tempInfra();
+  //tempInfra();
   velocidade();
-  mpu_loop();
+  //mpu_loop();
   espnow_loop();
   //SD_loop();
   display_loop();
 
-  Serial.print(temp_obj);
+  /*Serial.print(temp_obj);
   Serial.print(" , ");
   Serial.print(temp_amb);
   Serial.print(" , ");
@@ -125,6 +125,19 @@ void loop() {
   Serial.print(currentAngleY_A);
   Serial.print(" , ");
   Serial.print(currentAngleZ_A);
+  Serial.print(" , ");
+  Serial.print(tempo);*/
+
+  Serial.print(VEL);
+  Serial.print(" , ");
+  Serial.print(DISTANCIA);
+  Serial.print(" , ");
+  Serial.print(ACC);
+  Serial.print(" , ");
+  Serial.print(capacitivo);
+  Serial.print(" , ");
+  Serial.println(tempo);
+  
   Serial.println();
 
 }

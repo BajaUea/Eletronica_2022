@@ -1,11 +1,13 @@
 #include <SoftwareSerial.h> 
-#define pinVEL 15 // Pino de interrupção para rotação da roda
+#define pinVEL 3 // Pino de interrupção para rotação da roda
 
 unsigned long Velocidade_millisInicial = 0; //tempo inicial para velocidade  
 volatile byte pulsosVEL = 0; //contador de pulsos para velocidade
 float VEL = 0; //velocidade em km/h
 float RAIO_RODA = 0.266;
 int contadorVEL = 0;
+
+
 
 void velocidade()
 {
@@ -16,6 +18,7 @@ void velocidade()
 
     Serial.print ("  VEL = ");
     Serial.println (VEL);
+    
     pulsosVEL = 0;
     Velocidade_millisInicial = millis();
     
@@ -31,6 +34,7 @@ void tacometro()
 void setup(){
   Serial.begin(9600);
   attachInterrupt (digitalPinToInterrupt(pinVEL), tacometro, RISING); //Interrupção para ler pulso da velocidade
+  Serial.println("passou setup");
 }
 void loop(){
   velocidade();
