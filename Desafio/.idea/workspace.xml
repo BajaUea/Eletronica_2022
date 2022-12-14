@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c2e4b44-c5cc-44dc-ab4b-9080d8798a7c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Codes/Codigo_Geral/v2/Codigo-testes.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Codes/Codigo_Geral/v2/Display.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Codes/Codigo_Geral/v2/MLX90614.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Codes/Codigo_Geral/v2/MPU6050.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Codes/Codigo_Geral/v2/SdCard.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Codes/Codigo_Geral/v2/Velocidade&amp;RPM.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Codes/Codigo_Geral/v2/espnow.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebook.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +32,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;CSV-Groovy.csv.groovy&quot;,
     &quot;database.data.extractors.current.id&quot;: &quot;CSV-Groovy.csv.groovy&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Work/Some-Projects&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Work/Interfacing_BajaSAE_Sensors&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -52,7 +45,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Desafio" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -94,11 +87,24 @@
       <workItem from="1667797056721" duration="127000" />
       <workItem from="1668007739034" duration="82000" />
       <workItem from="1668007845646" duration="8000" />
+      <workItem from="1668044339096" duration="23000" />
+      <workItem from="1668120840128" duration="3000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Desafio$main.coverage" NAME="main Coverage Results" MODIFIED="1667279025491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
