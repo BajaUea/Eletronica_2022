@@ -11,6 +11,9 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 static const int RXPin = 16, TXPin = 17;
 static const uint32_t GPSBaud = 9600;
+unsigned long previousMillis = 0;     // will store last time LED was updated
+const long interval = 1000;           // interval at which to blink (milliseconds)
+unsigned long currentMillis = 0;
 
 // The TinyGPSPlus object
 TinyGPSPlus gps;
@@ -44,21 +47,25 @@ void loop()
   // Dispatch incoming characters
   while (ss.available() > 0)
     gps.encode(ss.read());
+    currentMillis = millis();
 
- 
-    Serial.print(gps.location.lat(), 6);
-    Serial.print(" ,");
-    Serial.print(gps.location.lng(), 6);
-    Serial.print(" ,");
-    Serial.print(gps.altitude.meters());
-    Serial.print(" ,");
-    Serial.print(gps.speed.kmph());
-    
+    if (currentMillis - previousMillis >= interval) {
 
-    if (gps.charsProcessed() < 10)
-      Serial.println(F("WARNING: No GPS data.  Check wiring."));
+      previousMillis = currentMillis;
 
-    Serial.println();
+      Serial.print(gps.location.lat(), 6);
+      Serial.print(" ,");
+      Serial.print(gps.location.lng(), 6);
+      Serial.print(" ,");
+      Serial.print(gps.altitude.meters());
+      Serial.print(" ,");
+      Serial.print(gps.speed.kmph());
+      
+      if (gps.charsProcessed() < 10)
+        Serial.println(F("WARNING: No GPS data.  Check wiring."));
+  
+      Serial.println();
+    }
     print_display();
   
 }
