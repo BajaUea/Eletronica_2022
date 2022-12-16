@@ -8,7 +8,6 @@ from pathlib import Path
 serialPort = serial.Serial()
 serialPort.timeout = 0.5
 
-
 df = pd.DataFrame(columns=["latitude", "longitude", "altura", "speed"])
 
 arquivo = strftime("%d.%m.%Y_%Hh%M")
@@ -30,16 +29,12 @@ except:
 
 while True:
     if serialPort.is_open:
-        print(serialPort.readline().decode("utf-8").rstrip("\r\n").split(
-                                                            ","))
         try:
-            latitude, longitude, altura, speed = [int(x) for x in
-                                                        serialPort.readline().decode("utf-8").rstrip("\r\n").split(
-                                                            ",")]
-            with open(f"Arquivos_CSV/{arquivo}.csv", 'w', newline='') as f:
+            latitude, longitude, altura, speed = [float(x) for x in
+                                                  serialPort.readline().decode("utf-8").rstrip("\r\n").split(
+                                                      ",")]
+            with open(f"Arquivos_CSV/{arquivo}.csv", 'a+', newline='') as f:
                 thewriter = csv.writer(f)
                 thewriter.writerow([latitude, longitude, altura, speed])
-            print("foi")
         except:
-            print("ERROR")
-
+            print("Error Serial")

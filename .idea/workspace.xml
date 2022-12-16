@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19c91941-fc79-418c-b681-118e48d856be" name="Changes" comment="Gas tank">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Eletronica_2022.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Eletronica_2022.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codes/GPS/GPS_TESTE/GPS_TESTE.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/GPS/GPS_TESTE/GPS_TESTE.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codes/StoreDataInCsv/StoreDataInCsv.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/StoreDataInCsv/StoreDataInCsv.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +94,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1652839324317</updated>
-      <workItem from="1671169929522" duration="421000" />
+      <workItem from="1671169929522" duration="1111000" />
     </task>
     <task id="LOCAL-00001" summary="Gas tank">
       <created>1652839369783</created>
@@ -137,43 +136,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Codes/StoreDataInCsv/StoreDataInCsv.py</url>
-          <line>31</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/StoreDataInCsv/StoreDataInCsv.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/StoreDataInCsv/StoreDataInCsv.py</url>
-          <line>22</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/StoreDataInCsv/StoreDataInCsv.py</url>
-          <line>23</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/StoreDataInCsv/StoreDataInCsv.py</url>
-          <line>20</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/StoreDataInCsv/StoreDataInCsv.py</url>
-          <line>36</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/StoreDataInCsv/StoreDataInCsv.py</url>
-          <line>33</line>
-          <option name="timeStamp" value="8" />
+          <line>25</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/StoreDataInCsv_py$StoreDataInCsv.coverage" NAME="StoreDataInCsv Coverage Results" MODIFIED="1671170215892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/StoreDataInCsv" />
+    <SUITE FILE_PATH="coverage/StoreDataInCsv_py$StoreDataInCsv.coverage" NAME="StoreDataInCsv Coverage Results" MODIFIED="1671171016351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes/StoreDataInCsv" />
   </component>
 </project>

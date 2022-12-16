@@ -52,7 +52,7 @@ void loop()
     Serial.print(" ,");
     Serial.print(gps.altitude.meters());
     Serial.print(" ,");
-    Serial.println(gps.speed.kmph());
+    Serial.print(gps.speed.kmph());
     
 
     if (gps.charsProcessed() < 10)
