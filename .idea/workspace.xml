@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19c91941-fc79-418c-b681-118e48d856be" name="Changes" comment="Gas tank">
-      <change afterPath="$PROJECT_DIR$/Codes/StoreDataInCsv/analysing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/GPS/GPS_TESTE/GPS_TESTE.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/GPS/GPS_TESTE/GPS_TESTE.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/StoreDataInCsv/StoreDataInCsv.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/StoreDataInCsv/StoreDataInCsv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CADS/Caixa/OldVersions/dISPLAY.0004.ipt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CADS/Caixa/dISPLAY.ipt" beforeDir="false" afterPath="$PROJECT_DIR$/CADS/Caixa/dISPLAY.ipt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CADS/Caixa/sUPORTE.ipt" beforeDir="false" afterPath="$PROJECT_DIR$/CADS/Caixa/sUPORTE.ipt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codes/StoreDataInCsv/Arquivos_CSV/map.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/StoreDataInCsv/Arquivos_CSV/map.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +121,8 @@
       <updated>1652839324317</updated>
       <workItem from="1671169929522" duration="1340000" />
       <workItem from="1671204406679" duration="5378000" />
+      <workItem from="1671373380907" duration="595000" />
+      <workItem from="1671604716704" duration="29000" />
     </task>
     <task id="LOCAL-00001" summary="Gas tank">
       <created>1652839369783</created>
