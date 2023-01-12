@@ -1,5 +1,16 @@
 #include <Wire.h>
 
+// LapTimer
+const int buttonPin = 2; 
+unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
+unsigned long debounceDelay = 50;  
+int buttonState;             // the current reading from the input pin
+int lastButtonState = LOW;   // the previous reading from the input pin
+unsigned long int tempo_inicio = 0;
+String currentlap = "00:00:00"
+String lastlap = "00:00:00"
+String bestlap = "00:00:00"
+
 // Capacitivo
 const int Capacitivo_1 = 8;
 const int Capacitivo_2 = 12;
@@ -50,6 +61,7 @@ void setup() {
  Serial.begin(9600);
  espnow_setup();
  capacitivo_setup();
+ pinMode(buttonPin, INPUT_PULLUP);
  SerialPort.begin(9600, SERIAL_8N1, 16, 17);
 
 
