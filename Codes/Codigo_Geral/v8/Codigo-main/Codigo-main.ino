@@ -7,13 +7,13 @@ unsigned long debounceDelay = 50;
 int buttonState;             // the current reading from the input pin
 int lastButtonState = LOW;   // the previous reading from the input pin
 unsigned long int tempo_inicio = 0;
-String currentlap = "00:00:00"
-String lastlap = "00:00:00"
-String bestlap = "00:00:00"
+String currentlap = "00:00:00";
+String lastlap = "00:00:00";
+String bestlap = "00:00:00";
 
 // Capacitivo
-const int Capacitivo_1 = 8;
-const int Capacitivo_2 = 12;
+const int Capacitivo_1 = 10;
+const int Capacitivo_2 = 9;
 int Tanque_nivel = 0;
 int Tanque_display = 0;
 
@@ -42,8 +42,8 @@ HardwareSerial DisplayPort(2);  //if using UART2
 
 // RPM E VELOCIDADE
 #include <SoftwareSerial.h>
-#define pinVEL 15 // // Pino de interrupção para rotação da roda
-#define pinRPM 17 // Pino de interrupção para rotação do motor
+#define pinVEL 2 // // Pino de interrupção para rotação da roda
+#define pinRPM 14 // Pino de interrupção para rotação do motor
 
 unsigned long Velocidade_millisInicial = 0; //tempo inicial para velocidade 
 volatile byte pulsosVEL = 0; //contador de pulsos para velocidade
@@ -55,14 +55,14 @@ int           rpm, hz;
 volatile byte pulsos;
 unsigned long timeold;
 unsigned int pulsos_por_volta = 50;
-int pRoda = 3;
+int pRoda = 2;
 
 void setup() {
  Serial.begin(9600);
  espnow_setup();
  capacitivo_setup();
  pinMode(buttonPin, INPUT_PULLUP);
- SerialPort.begin(9600, SERIAL_8N1, 16, 17);
+ DisplayPort.begin(9600, SERIAL_8N1, 16, 17);
 
 
  
