@@ -44,6 +44,7 @@ HardwareSerial DisplayPort(2);  //if using UART2
 #include <SoftwareSerial.h>
 #define pinVEL 2 // // Pino de interrupção para rotação da roda
 #define pinRPM 14 // Pino de interrupção para rotação do motor
+float PERIMETRO_RODA = 0.26;
 
 unsigned long Velocidade_millisInicial = 0; //tempo inicial para velocidade 
 volatile byte pulsosVEL = 0; //contador de pulsos para velocidade
