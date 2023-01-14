@@ -22,11 +22,42 @@ void laptimer_loop() {
 
       // only toggle the LED if the new button state is HIGH
       if (buttonState == HIGH) {
-        tempo_inicio = millis();
+        if (LapState == false) {
+          LapState = true;
+          tempo_inicio = millis();
+        }
+        else if (LapState == true) {
+          LapState = false;
+          tempo_fim = millis();
+          }
+        
          
       }
     }
   }
   // save the reading. Next time through the loop, it'll be the lastButtonState:
   lastButtonState = reading;
+
+  if (tempo_fim > tempo_inicio){
+    lastlap_counter = tempo_fim - tempo_inicio;
+    tempo_fim = 0;
+    tempo_inicio = 0;
+    
+  }
+  
+  if (LapState == true) {
+    Millisec = ((millis()-tempo_inicio)%1000);
+    Sec = ((millis()-tempo_inicio)/1000)%60;
+    Min = ((millis()-tempo_inicio)/60000)%60;
+    if (Min < 10) {
+      if (Sec < 10){
+      currentlap = String('0' + Min + ':' + '0' + Sec + '.' + Millisec);
+      }
+      else currentlap = String('0' + Min + ':' + Sec + '.' + Millisec);
+    }
+    else if (Sec < 10) currentlap = String(Min + ':' + '0' + Sec + '.' + Millisec);
+    else currentlap = String(Min + ':' + Sec + '.' + Millisec);
+  }
+  else currentlap = "00:00.00"
+  
 }

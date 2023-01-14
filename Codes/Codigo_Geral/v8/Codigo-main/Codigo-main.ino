@@ -2,14 +2,19 @@
 
 // LapTimer
 const int buttonPin = 2; 
-unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
-unsigned long debounceDelay = 50;  
+unsigned long int lastDebounceTime = 0;  // the last time the output pin was toggled
+int debounceDelay = 50;  
 int buttonState;             // the current reading from the input pin
 int lastButtonState = LOW;   // the previous reading from the input pin
 unsigned long int tempo_inicio = 0;
-String currentlap = "00:00:00"
-String lastlap = "00:00:00"
-String bestlap = "00:00:00"
+unsigned long int tempo_fim = 0;
+bool LapState = false;
+String currentlap = "00:00.00"
+String lastlap = "00:00.00"
+String bestlap = "00:00.00"
+unsigned long int bestlap_counter = 100000000;
+unsigned long intlastlap_counter = 0
+unsigned long int Sec, Min, Millisec;
 
 // Capacitivo
 const int Capacitivo_1 = 8;
