@@ -39,7 +39,7 @@ void laptimer_loop() {
   lastButtonState = reading;
 
   if (tempo_fim > tempo_inicio){
-    lastlap_counter = tempo_fim - tempo_inicio;
+    int lastlap_counter = tempo_fim - tempo_inicio;
     tempo_fim = 0;
     tempo_inicio = 0;
     
@@ -58,6 +58,6 @@ void laptimer_loop() {
     else if (Sec < 10) currentlap = String(Min + ':' + '0' + Sec + '.' + Millisec);
     else currentlap = String(Min + ':' + Sec + '.' + Millisec);
   }
-  else currentlap = "00:00.00"
+  else currentlap = "00:00.00";
   
 }

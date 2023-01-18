@@ -9,18 +9,18 @@ int lastButtonState = LOW;   // the previous reading from the input pin
 unsigned long int tempo_inicio = 0;
 unsigned long int tempo_fim = 0;
 bool LapState = false;
-String currentlap = "00:00.00"
-String lastlap = "00:00.00"
-String bestlap = "00:00.00"
+String currentlap = "00:00.00";
+String lastlap = "00:00.00";
+String bestlap = "00:00.00";
 unsigned long int bestlap_counter = 100000000;
-unsigned long intlastlap_counter = 0
+unsigned long intlastlap_counter = 0;
 unsigned long int Sec, Min, Millisec;
 
 // Capacitivo
-const int Capacitivo_1 = 10;
-const int Capacitivo_2 = 9;
+const int Capacitivo_1 = 25;
+const int Capacitivo_2 = 26;
 int Tanque_nivel = 0;
-int Tanque_display = 0;
+int Tanque_display = 25;
 
 // espnow
 #include <esp_now.h>
@@ -85,7 +85,7 @@ void setup() {
 
 void loop() {
   velocidade();
-  espnow_loop();
+  //espnow_loop();
   display_loop();
 
   Serial.print(RPM);
