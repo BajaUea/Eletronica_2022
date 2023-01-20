@@ -1,7 +1,7 @@
 #include <Wire.h>
 
 // LapTimer
-const int buttonPin = 2; 
+const int buttonPin = 35; 
 unsigned long int lastDebounceTime = 0;  // the last time the output pin was toggled
 int debounceDelay = 50;  
 int buttonState;             // the current reading from the input pin
@@ -47,13 +47,12 @@ HardwareSerial DisplayPort(2);  //if using UART2
 
 // RPM E VELOCIDADE
 #include <SoftwareSerial.h>
-#define pinVEL 2 // // Pino de interrupção para rotação da roda
 #define pinRPM 14 // Pino de interrupção para rotação do motor
 float PERIMETRO_RODA = 0.26;
 
 unsigned long Velocidade_millisInicial = 0; //tempo inicial para velocidade 
 volatile byte pulsosVEL = 0; //contador de pulsos para velocidade
-volatile byte pulsosRPM = 0; //contador de pulsos para velocidade
+volatile byte pulsosRPM = 0; //contador de pulsos para rpm
 float RPM = 0; //frequencia de rotacoes em RPM
 float VEL = 0; //velocidade em km/h
 // const double PERIMETRO_RODA = 1.72161199;
@@ -64,7 +63,7 @@ unsigned int pulsos_por_volta = 50;
 int pRoda = 2;
 
 void setup() {
- Serial.begin(9600);
+ Serial.begin(115200);
  espnow_setup();
  capacitivo_setup();
  pinMode(buttonPin, INPUT_PULLUP);
@@ -79,7 +78,8 @@ void setup() {
  attachInterrupt (pinRPM, RPMmotor, RISING); //Interrupção para ler pulso RPM
  
 //attachInterrupt (digitalPinToInterrupt(pinRPM), RPMmotor, RISING); //Interrupção para ler pulso do RPM
-  attachInterrupt(digitalPinToInterrupt(pinVEL), tacometro, RISING); //Interrupção para ler pulso da velocidade
+  pinMode(pRoda, INPUT);
+  attachInterrupt(pRoda, tacometro, RISING); //Interrupção para ler pulso da velocidade
 
 }
 
@@ -88,9 +88,5 @@ void loop() {
   //espnow_loop();
   display_loop();
 
-  Serial.print(RPM);
-  Serial.print(" , ");
-  Serial.print(VEL);
-  Serial.println();
 
 }
