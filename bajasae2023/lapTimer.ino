@@ -1,6 +1,6 @@
 void laptimer_loop() {
   // read the state of the switch into a local variable:
-  int reading = digitalRead(buttonPin);
+  int reading = !digitalRead(buttonPin);
 
   // check to see if you just pressed the button
   // (i.e. the input went from LOW to HIGH), and you've waited long enough
@@ -39,25 +39,39 @@ void laptimer_loop() {
   lastButtonState = reading;
 
   if (tempo_fim > tempo_inicio){
-    int lastlap_counter = tempo_fim - tempo_inicio;
+    lastlap_counter = tempo_fim - tempo_inicio;
+    lastlap = format_timer(lastlap_counter);
+    
+    if (lastlap_counter < bestlap_counter) {
+      bestlap_counter = lastlap_counter;
+      bestlap = lastlap;
+      }
     tempo_fim = 0;
     tempo_inicio = 0;
     
   }
   
   if (LapState == true) {
-    Millisec = ((millis()-tempo_inicio)%1000);
-    Sec = ((millis()-tempo_inicio)/1000)%60;
-    Min = ((millis()-tempo_inicio)/60000)%60;
-    if (Min < 10) {
-      if (Sec < 10){
-      currentlap = String('0' + Min + ':' + '0' + Sec + '.' + Millisec);
-      }
-      else currentlap = String('0' + Min + ':' + Sec + '.' + Millisec);
-    }
-    else if (Sec < 10) currentlap = String(Min + ':' + '0' + Sec + '.' + Millisec);
-    else currentlap = String(Min + ':' + Sec + '.' + Millisec);
+     currentlap = format_timer(millis()-tempo_inicio);
   }
   else currentlap = "00:00.00";
-  
+  Serial.println("lastlap:" + lastlap + " " + "currentlap:" + currentlap + " " + "bestlap:" + bestlap);
+
 }
+
+String format_timer(int total_millis){
+    Millisec = (total_millis%1000)/10;
+    Sec = (total_millis/1000)%60;
+    Min = (total_millis/60000)%60;
+    if (Min < 10) {
+      if (Sec < 10){
+        if (Millisec < 10) return String(String('0') + Min + String(':') + Sec + String('.') + String('0') + Millisec);
+        return String(String('0') + Min + String(':') + String('0') + Sec + String('.') + Millisec);
+      }
+      else if (Millisec < 10) return String(String('0') + Min + String(':') + Sec + String('.') + String('0') + Millisec);
+      else return String(String('0') + Min + String(':') + Sec + String('.') + Millisec);
+    }
+    else if (Sec < 10) return String(Min + String(':') + String('0') + Sec + String('.') + Millisec);
+    else if (Millisec < 10) return String(Min + String(':') + Sec + String('.') + String('0') + Millisec);
+    else return String(Min + String(':') + Sec + String('.') + Millisec);
+  }
