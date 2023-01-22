@@ -12,7 +12,7 @@ int Tanque_nivel = 0;
 int Tanque_display = 25;
 
 // LapTimer
-const int buttonPin = 35;
+const int buttonPin = 12;
 unsigned long int lastDebounceTime = 0;  // the last time the output pin was toggled
 int debounceDelay = 50;
 int buttonState;             // the current reading from the input pin
@@ -24,8 +24,9 @@ String currentlap = "00:00.00";
 String lastlap = "00:00.00";
 String bestlap = "00:00.00";
 unsigned long int bestlap_counter = 100000000;
-unsigned long intlastlap_counter = 0;
+unsigned long int lastlap_counter = 0;
 unsigned long int Sec, Min, Millisec;
+bool tempo_inicio_flag, tempo_fim_flag;
 
 // Display
 #include <HardwareSerial.h>
@@ -45,6 +46,9 @@ unsigned long ultimoTempo = 0;
 
 void setup() {
   Serial.begin(115200);
+  
+  pinMode(buttonPin, INPUT_PULLUP);
+  attachInterrupt (buttonPin, ISR_timer, CHANGE); //Interrupção para ler pulso RPM
 
   //RPM roda
   pinMode(pRoda, INPUT);
@@ -73,6 +77,7 @@ void setup() {
 void loop() {
   velocidade();
   tempInfra();
+  laptimer_loop();
   display_loop();
   Serial.print(rpm);
   Serial.print("\t");

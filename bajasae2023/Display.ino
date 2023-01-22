@@ -22,4 +22,22 @@ void display_loop(){
   DisplayPort.write(0xff);  // We always have to send this three lines after each command sent to the nextion display.
   DisplayPort.write(0xff);
   DisplayPort.write(0xff);
+
+  DisplayPort.print("lastlap.txt=");  // This is sent to the nextion display to set what object name (before the dot) and what atribute (after the dot) are you going to change.
+  DisplayPort.print("\"" + lastlap + "\"");  // This is the value you want to send to that object and atribute mention before.
+  DisplayPort.write(0xff);  // We always have to send this three lines after each command sent to the nextion display.
+  DisplayPort.write(0xff);
+  DisplayPort.write(0xff);
+
+  DisplayPort.print("bestlap.txt=");  // This is sent to the nextion display to set what object name (before the dot) and what atribute (after the dot) are you going to change.
+  DisplayPort.print("\"" + bestlap + "\"");  // This is the value you want to send to that object and atribute mention before.
+  DisplayPort.write(0xff);  // We always have to send this three lines after each command sent to the nextion display.
+  DisplayPort.write(0xff);
+  DisplayPort.write(0xff);
+
+  DisplayPort.print("currentlap.txt=");  // This is sent to the nextion display to set what object name (before the dot) and what atribute (after the dot) are you going to change.
+  DisplayPort.print("\"" + currentlap + "\"");  // This is the value you want to send to that object and atribute mention before.
+  DisplayPort.write(0xff);  // We always have to send this three lines after each command sent to the nextion display.
+  DisplayPort.write(0xff);
+  DisplayPort.write(0xff);
 }
