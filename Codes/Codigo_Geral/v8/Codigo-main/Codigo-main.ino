@@ -1,11 +1,7 @@
 #include <Wire.h>
 
 // LapTimer
-<<<<<<< HEAD
-const int buttonPin = 35; 
-=======
 const int buttonPin = 19; 
->>>>>>> 9c2cc0799ed13300785434c8dff70cd4770c357a
 unsigned long int lastDebounceTime = 0;  // the last time the output pin was toggled
 int debounceDelay = 50;  
 int buttonState;             // the current reading from the input pin
@@ -17,21 +13,12 @@ String currentlap = "00:00.00";
 String lastlap = "00:00.00";
 String bestlap = "00:00.00";
 unsigned long int bestlap_counter = 100000000;
-<<<<<<< HEAD
-unsigned long intlastlap_counter = 0;
-unsigned long int Sec, Min, Millisec;
-
-// Capacitivo
-const int Capacitivo_1 = 25;
-const int Capacitivo_2 = 26;
-=======
 unsigned long int lastlap_counter = 0;
 unsigned long int Sec, Min, Millisec;
 //
 //// Capacitivo
 const int Capacitivo_1 = 16;
 const int Capacitivo_2 = 18;
->>>>>>> 9c2cc0799ed13300785434c8dff70cd4770c357a
 int Tanque_nivel = 0;
 int Tanque_display = 25;
 
@@ -59,14 +46,8 @@ SoftwareSerial SerialPort(16, 17);
 
 
 // RPM E VELOCIDADE
-<<<<<<< HEAD
-#include <SoftwareSerial.h>
-#define pinRPM 14 // Pino de interrupção para rotação do motor
-float PERIMETRO_RODA = 0.26;
-=======
 #define pinVEL 15 // // Pino de interrupção para rotação da roda
 #define pinRPM 17 // Pino de interrupção para rotação do motor
->>>>>>> 9c2cc0799ed13300785434c8dff70cd4770c357a
 
 unsigned long Velocidade_millisInicial = 0; //tempo inicial para velocidade 
 volatile byte pulsosVEL = 0; //contador de pulsos para velocidade
@@ -81,45 +62,21 @@ unsigned int pulsos_por_volta = 50;
 int pRoda = 3;
 
 void setup() {
-<<<<<<< HEAD
- Serial.begin(115200);
-=======
  SerialPort.begin(9600);
  Serial.begin(9600);
->>>>>>> 9c2cc0799ed13300785434c8dff70cd4770c357a
  espnow_setup();
  capacitivo_setup();
  pinMode(buttonPin, INPUT_PULLUP);
 
 
-<<<<<<< HEAD
- 
-//   pinMode(pinVEL, INPUT);
-//  attachInterrupt (pinVEL, tacometro, RISING); //Interrupção para ler pulso da velocidade
-
- pinMode(pinRPM, INPUT);
- attachInterrupt (pinRPM, RPMmotor, RISING); //Interrupção para ler pulso RPM
- 
-//attachInterrupt (digitalPinToInterrupt(pinRPM), RPMmotor, RISING); //Interrupção para ler pulso do RPM
-  pinMode(pRoda, INPUT);
-  attachInterrupt(pRoda, tacometro, RISING); //Interrupção para ler pulso da velocidade
-=======
  pinMode(pinVEL, INPUT);
  attachInterrupt (pinVEL, tacometro, RISING); //Interrupção para ler pulso da velocidade
->>>>>>> 9c2cc0799ed13300785434c8dff70cd4770c357a
 
 }
 
 void loop() {
   velocidade();
-<<<<<<< HEAD
-  //espnow_loop();
-  display_loop();
-
-
-=======
   espnow_loop();
   laptimer_loop();
   display_loop();
->>>>>>> 9c2cc0799ed13300785434c8dff70cd4770c357a
 }
