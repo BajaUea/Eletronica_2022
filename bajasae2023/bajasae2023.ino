@@ -26,6 +26,7 @@ String bestlap = "00:00.00";
 unsigned long int bestlap_counter = 100000000;
 unsigned long int lastlap_counter = 0;
 unsigned long int Sec, Min, Millisec;
+bool tempo_inicio_flag, tempo_fim_flag;
 
 // Display
 #include <HardwareSerial.h>
@@ -45,7 +46,9 @@ unsigned long ultimoTempo = 0;
 
 void setup() {
   Serial.begin(115200);
+  
   pinMode(buttonPin, INPUT_PULLUP);
+  attachInterrupt (buttonPin, ISR_timer, CHANGE); //Interrupção para ler pulso RPM
 
   //RPM roda
   pinMode(pRoda, INPUT);
