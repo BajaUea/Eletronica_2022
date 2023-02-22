@@ -45,7 +45,7 @@ float RPM = 0; //frequencia de rotacoes em RPM
 #include <SparkFunMLX90614.h> // SparkFunMLX90614 Arduino library
 #include <Wire.h>
 IRTherm therm; // Create an IRTherm object to interact with throughout
-float temperatura = 0;
+float temperatura = 0, temperaturaInterna = 0;
 unsigned long ultimoTempo = 0;
 
 void setup() {
@@ -86,13 +86,19 @@ void loop() {
   tempInfra();
   laptimer_loop();
   display_loop();
-
+  Serial.print(rpm);
+  Serial.print("\t");
+  Serial.print(RPM);
+  Serial.print("\t");
+  Serial.print(temperatura);
+  Serial.print("\t");
+  Serial.println(Tanque_nivel); 
   
   if(HC12Serial.available() > 0){      //loraSerial
       if((millis()-telemetria_millisInicial) > 600){
-          //HC12Serial.print(temp_obj);
+          HC12Serial.print(temperatura);
           HC12Serial.print(",");
-          //HC12Serial.print(temp_amb);
+          HC12Serial.print(temperaturaInterna);
           HC12Serial.print(",");
           HC12Serial.print(rpm); // rpm
           HC12Serial.print(",");
@@ -103,11 +109,5 @@ void loop() {
       }
   }
   
-  Serial.print(rpm);
-  Serial.print("\t");
-  Serial.print(RPM);
-  Serial.print("\t");
-  Serial.print(temperatura);
-  Serial.print("\t");
-  Serial.println(Tanque_nivel);
+
 }
