@@ -1,13 +1,20 @@
 void laptimer_loop() {
-  if (tempo_fim_flag == true){
-    tempo_fim = millis();
-    tempo_fim_flag = false;
-  }
-  if (tempo_inicio_flag == true){
-    tempo_inicio = millis();
-    tempo_inicio_flag = false;
-  }
   
+  if (button_flag){
+    button_flag = false;
+    if ((millis() - lastDebounceTime) > debounceDelay) {
+      lastDebounceTime = millis();
+      if (LapState == false) {
+        LapState = true;
+        tempo_inicio = millis();
+      }
+      else if (LapState == true) {
+        LapState = false;
+        tempo_fim = millis();
+        }
+    }
+  }
+
   if (tempo_fim > tempo_inicio){
     lastlap_counter = tempo_fim - tempo_inicio;
     lastlap = format_timer(lastlap_counter);
@@ -18,15 +25,15 @@ void laptimer_loop() {
       }
     tempo_fim = 0;
     tempo_inicio = 0;
-    
   }
   
   if (LapState == true) {
-     currentlap = format_timer(millis()-tempo_inicio);
+    currentlap = format_timer(millis()-tempo_inicio);
   }
   else currentlap = "00:00.00";
-  Serial.println("lastlap:" + lastlap + " " + "currentlap:" + currentlap + " " + "bestlap:" + bestlap);
+  // Serial.println("lastlap:" + lastlap + " " + "currentlap:" + currentlap + " " + "bestlap:" + bestlap + digitalRead(buttonPin));
 
+  
 }
 
 String format_timer(int total_millis){
@@ -46,14 +53,6 @@ String format_timer(int total_millis){
     else return String(Min + String(':') + Sec + String('.') + Millisec);
   }
 
-
 void ISR_timer(){
-  if (LapState == false) {
-    LapState = true;
-    tempo_inicio_flag = true;
+  button_flag = true;
   }
-  else if (LapState == true) {
-    LapState = false;
-    tempo_fim_flag = true;
-    }
-}
