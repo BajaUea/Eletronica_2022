@@ -14,7 +14,7 @@ int Tanque_display = 25;
 // LapTimer
 const int buttonPin = 12;
 unsigned long int lastDebounceTime = 0;  // the last time the output pin was toggled
-int debounceDelay = 50;
+int debounceDelay = 200;
 int buttonState;             // the current reading from the input pin
 int lastButtonState = LOW;   // the previous reading from the input pin
 unsigned long int tempo_inicio = 0;
@@ -25,12 +25,16 @@ String lastlap = "00:00.00";
 String bestlap = "00:00.00";
 unsigned long int bestlap_counter = 100000000;
 unsigned long int lastlap_counter = 0;
+bool button_flag = false;
 unsigned long int Sec, Min, Millisec;
-bool tempo_inicio_flag, tempo_fim_flag;
 
 // Display
 #include <HardwareSerial.h>
 HardwareSerial DisplayPort(2);  //if using UART2
+
+// HC-12
+HardwareSerial HC12Serial(1); // HC-12 TX Pin, HC-12 RX Pin
+unsigned long telemetria_millisInicial = 0;
 
 //rpm motor
 int pinRPM = 19; // Pino de interrupção para rotação do motor
@@ -68,6 +72,9 @@ void setup() {
   //display
   DisplayPort.begin(9600, SERIAL_8N1, 16, 17);
 
+  // HC-12
+  HC12Serial.begin(1200,SERIAL_8N1,3,1);
+  
   //rpm motor
   pinMode(pinRPM, INPUT);
   attachInterrupt (pinRPM, RPMmotor, RISING); //Interrupção para ler pulso RPM
@@ -79,6 +86,23 @@ void loop() {
   tempInfra();
   laptimer_loop();
   display_loop();
+
+  
+  if(HC12Serial.available() > 0){      //loraSerial
+      if((millis()-telemetria_millisInicial) > 600){
+          //HC12Serial.print(temp_obj);
+          HC12Serial.print(",");
+          //HC12Serial.print(temp_amb);
+          HC12Serial.print(",");
+          HC12Serial.print(rpm); // rpm
+          HC12Serial.print(",");
+          HC12Serial.print(RPM); // velocidade
+          HC12Serial.print(",");
+          HC12Serial.println(Tanque_nivel);
+          telemetria_millisInicial = millis();
+      }
+  }
+  
   Serial.print(rpm);
   Serial.print("\t");
   Serial.print(RPM);
