@@ -9,7 +9,7 @@ void motor(){
     detachInterrupt(pinRPM);
     //(1 mim)/pulsos por volta)/tempo atual - tempo da ultima vez) * npulsos
     //hz = (60 * 1000 / pulsos_por_volta ) / (millis() - timeold) * pulsos;
-    RPM = ((60 * 200 * 5)/2) / (millis() - timeold) * pulsosRPM;
+    RPM = ((60 * 200 * 5)/4) / (millis() - timeold) * pulsosRPM;
     timeold = millis();
     pulsos = 0;
     
