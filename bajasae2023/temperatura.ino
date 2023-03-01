@@ -13,7 +13,7 @@ void tempInfra() {
     ultimoTempo = millis();
     iniciaInfra();
     if (therm.read()){ // On success, read() will return 1, on fail 0.
-      temperatura = therm.object()+10;
+      temperaturaObjeto = therm.object()+10;
       temperaturaInterna = therm.ambient();
       /*Serial.print("Object: " + String(temperatura, 2));
       Serial.write('°'); // Degree Symbol

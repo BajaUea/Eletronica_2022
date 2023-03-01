@@ -1,3 +1,13 @@
+#include <esp_now.h>
+#include <WiFi.h>
+uint8_t broadcastAddress[] = {0x0C, 0xB8, 0x15, 0xF2, 0xF6, 0x04};
+#include <ArduinoJson.h>
+String jsondata;
+StaticJsonDocument<200> doc;
+unsigned long telemetria_millis = 0;
+
+
+
 //RPM da Roda
 float           rpm, hz;
 volatile byte pulsos;
@@ -32,9 +42,6 @@ unsigned long int Sec, Min, Millisec;
 #include <HardwareSerial.h>
 HardwareSerial DisplayPort(2);  //if using UART2
 
-// HC-12
-HardwareSerial HC12Serial(1); // HC-12 TX Pin, HC-12 RX Pin
-unsigned long telemetria_millisInicial = 0;
 
 //rpm motor
 int pinRPM = 19; // Pino de interrupção para rotação do motor
@@ -45,11 +52,14 @@ float RPM = 0; //frequencia de rotacoes em RPM
 #include <SparkFunMLX90614.h> // SparkFunMLX90614 Arduino library
 #include <Wire.h>
 IRTherm therm; // Create an IRTherm object to interact with throughout
-float temperatura = 0, temperaturaInterna = 0;
+float temperaturaObjeto = 0;
+float temperaturaInterna = 0;
 unsigned long ultimoTempo = 0;
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
+
+  espnow_setup();
   
   pinMode(buttonPin, INPUT_PULLUP);
   attachInterrupt (buttonPin, ISR_timer, CHANGE); //Interrupção para ler pulso RPM
@@ -71,13 +81,10 @@ void setup() {
 
   //display
   DisplayPort.begin(9600, SERIAL_8N1, 16, 17);
-
-  // HC-12
-  HC12Serial.begin(1200,SERIAL_8N1,3,1);
   
   //rpm motor
   pinMode(pinRPM, INPUT);
-  attachInterrupt (pinRPM, RPMmotor, RISING); //Interrupção para ler pulso RPM
+  attachInterrupt (pinRPM, RPMmotor, RISING); //  Interrupção para ler pulso RPM
 }
 
 
@@ -86,28 +93,5 @@ void loop() {
   tempInfra();
   laptimer_loop();
   display_loop();
-  Serial.print(rpm);
-  Serial.print("\t");
-  Serial.print(RPM);
-  Serial.print("\t");
-  Serial.print(temperatura);
-  Serial.print("\t");
-  Serial.println(Tanque_nivel); 
-  
-  if(HC12Serial.available() > 0){      //loraSerial
-      if((millis()-telemetria_millisInicial) > 600){
-          HC12Serial.print(temperatura);
-          HC12Serial.print(",");
-          HC12Serial.print(temperaturaInterna);
-          HC12Serial.print(",");
-          HC12Serial.print(rpm); // rpm
-          HC12Serial.print(",");
-          HC12Serial.print(RPM); // velocidade
-          HC12Serial.print(",");
-          HC12Serial.println(Tanque_nivel);
-          telemetria_millisInicial = millis();
-      }
-  }
-  
-
+  espnow_loop();
 }
